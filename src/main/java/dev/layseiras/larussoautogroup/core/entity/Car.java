@@ -26,10 +26,17 @@ public class Car extends Base {
         super();
     }
 
-    public Car(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String brand, String model, Double price) {
+    public Car(String name, CarBrand brand, String model, Double price) {
+        this.name = name;
+        this.brand = brand;
+        this.model = model;
+        this.price = price;
+    }
+
+    public Car(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, CarBrand brand, String model, Double price) {
         super(id, createdAt, updatedAt, deletedAt);
         this.name = name;
-        this.brand = CarBrand.valueOf(brand);
+        this.brand = brand;
         this.model = model;
         this.price = price;
     }

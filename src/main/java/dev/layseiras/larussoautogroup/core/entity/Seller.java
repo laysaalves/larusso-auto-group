@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tb_seller")
 public class Seller extends Base {
@@ -23,8 +25,15 @@ public class Seller extends Base {
         super();
     }
 
-    public Seller(Long id, String name, String email, int testDriveQuantity, int satisfiedClient) {
-        super(id);
+    public Seller(String name, String email, int testDriveQuantity, int satisfiedClient) {
+        this.name = name;
+        this.email = email;
+        this.testDriveQuantity = testDriveQuantity;
+        this.satisfiedClient = satisfiedClient;
+    }
+
+    public Seller(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email, int testDriveQuantity, int satisfiedClient) {
+        super(id, createdAt, updatedAt, deletedAt);
         this.name = name;
         this.email = email;
         this.testDriveQuantity = testDriveQuantity;

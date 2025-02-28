@@ -2,6 +2,8 @@ package dev.layseiras.larussoautogroup.core.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tb_client")
 public class Client extends Base {
@@ -19,8 +21,14 @@ public class Client extends Base {
         super();
     }
 
-    public Client(Long id, String name, String email, TestDrive testDrive) {
-        super(id);
+    public Client(String name, String email, TestDrive testDrive) {
+        this.name = name;
+        this.email = email;
+        this.testDrive = testDrive;
+    }
+
+    public Client(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email, TestDrive testDrive) {
+        super(id, createdAt, updatedAt, deletedAt);
         this.name = name;
         this.email = email;
         this.testDrive = testDrive;
