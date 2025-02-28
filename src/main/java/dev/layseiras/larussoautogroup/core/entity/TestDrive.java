@@ -21,15 +21,41 @@ public class TestDrive extends Base {
     @JoinColumn(name = "client_id")
     private Client clientTester;
 
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Column(name = "start_time")
+    private LocalTime startTime;
+
+    @Column(name = "end_time")
+    private LocalTime endTime;
+
     public TestDrive() {
         super();
     }
 
-    public TestDrive(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, Car car, Seller seller, Client client) {
-        super(id, createdAt, updatedAt, deletedAt, startDate, endDate, startTime, endTime);
-        this.carTested = car;
-        this.sellerTester = seller;
-        this.clientTester = client;
+    public TestDrive(Car carTested, Seller sellerTester, Client clientTester, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
+        this.carTested = carTested;
+        this.sellerTester = sellerTester;
+        this.clientTester = clientTester;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public TestDrive(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, Car carTested, Seller sellerTester, Client clientTester, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
+        super(id, createdAt, updatedAt, deletedAt);
+        this.carTested = carTested;
+        this.sellerTester = sellerTester;
+        this.clientTester = clientTester;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public Car getCarTested() {
@@ -54,5 +80,37 @@ public class TestDrive extends Base {
 
     public void setClientTester(Client clientTester) {
         this.clientTester = clientTester;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 }
