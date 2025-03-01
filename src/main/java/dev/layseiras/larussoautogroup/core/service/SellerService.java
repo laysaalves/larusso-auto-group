@@ -5,6 +5,8 @@ import dev.layseiras.larussoautogroup.infra.persistence.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SellerService {
     @Autowired
@@ -12,5 +14,13 @@ public class SellerService {
 
     public Seller addNewSeller(Seller seller) {
         return sellerRepo.save(seller);
+    }
+
+    public List<Seller> getAllSellers() {
+        return sellerRepo.findAll();
+    }
+
+    public Seller getSellerById(Long id) {
+      return sellerRepo.findById(id).orElseThrow();
     }
 }
