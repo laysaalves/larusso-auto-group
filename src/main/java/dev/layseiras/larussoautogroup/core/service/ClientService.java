@@ -19,4 +19,8 @@ public class ClientService {
     public List<Client> getAllClients() {
         return clientRepo.findAll();
     }
+
+    public Client getClientById(Long id) {
+        return clientRepo.findById(id).orElseThrow();
+    }
 }
