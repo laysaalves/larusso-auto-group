@@ -13,25 +13,19 @@ public class Client extends Base {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "test_drive")
-    private TestDrive testDrive;
-
     public Client() {
         super();
     }
 
-    public Client(String name, String email, TestDrive testDrive) {
+    public Client(String name, String email) {
         this.name = name;
         this.email = email;
-        this.testDrive = testDrive;
     }
 
-    public Client(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email, TestDrive testDrive) {
+    public Client(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email) {
         super(id, createdAt, updatedAt, deletedAt);
         this.name = name;
         this.email = email;
-        this.testDrive = testDrive;
     }
 
     public String getName() {
@@ -48,13 +42,5 @@ public class Client extends Base {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public TestDrive getTestDrive() {
-        return testDrive;
-    }
-
-    public void setTestDrive(TestDrive testDrive) {
-        this.testDrive = testDrive;
     }
 }
