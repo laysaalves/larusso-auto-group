@@ -24,7 +24,7 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping("/cars/{car_brand}")
+    @GetMapping("/cars/{brand}")
     public ResponseEntity<Car> getCarByBrand(@PathVariable CarBrand brand){
         Car car = carService.getCarByBrand(brand);
         if(car != null){
