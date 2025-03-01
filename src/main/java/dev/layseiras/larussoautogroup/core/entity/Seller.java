@@ -18,26 +18,21 @@ public class Seller extends Base {
     @Column(name = "tests_quantity")
     private int testDriveQuantity;
 
-    @Column(name = "satisfied_clients")
-    private int satisfiedClient;
-
     public Seller() {
         super();
     }
 
-    public Seller(String name, String email, int testDriveQuantity, int satisfiedClient) {
+    public Seller(String name, String email, int testDriveQuantity) {
         this.name = name;
         this.email = email;
         this.testDriveQuantity = testDriveQuantity;
-        this.satisfiedClient = satisfiedClient;
     }
 
-    public Seller(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email, int testDriveQuantity, int satisfiedClient) {
+    public Seller(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime deletedAt, String name, String email, int testDriveQuantity) {
         super(id, createdAt, updatedAt, deletedAt);
         this.name = name;
         this.email = email;
         this.testDriveQuantity = testDriveQuantity;
-        this.satisfiedClient = satisfiedClient;
     }
 
     public String getName() {
@@ -62,13 +57,5 @@ public class Seller extends Base {
 
     public void setTestDriveQuantity(int testDriveQuantity) {
         this.testDriveQuantity = testDriveQuantity;
-    }
-
-    public int getSatisfiedClient() {
-        return satisfiedClient;
-    }
-
-    public void setSatisfiedClient(int satisfiedClient) {
-        this.satisfiedClient = satisfiedClient;
     }
 }
