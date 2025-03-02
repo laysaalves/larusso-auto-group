@@ -6,6 +6,7 @@ import dev.layseiras.larussoautogroup.core.service.TestDriveService;
 import dev.layseiras.larussoautogroup.infra.dtos.ErrorMessage;
 import dev.layseiras.larussoautogroup.infra.dtos.TestDriveResponse;
 import dev.layseiras.larussoautogroup.infra.exceptions.CarNotFoundException;
+import dev.layseiras.larussoautogroup.infra.exceptions.CarTestedConflictException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,8 @@ public class TestDriveController {
             }
         } catch (CarNotFoundException e){
             return ResponseEntity.status(404).body(new ErrorMessage(e.getMessage()));
+        } catch (CarTestedConflictException e) {
+            return ResponseEntity.status(409).body(new ErrorMessage(e.getMessage()));
         }
         return ResponseEntity.badRequest().build();
     }
