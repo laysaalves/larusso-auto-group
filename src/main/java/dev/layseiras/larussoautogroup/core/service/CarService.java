@@ -24,4 +24,8 @@ public class CarService {
     public Car getCarByBrand(CarBrand brand){
         return carRepo.findByBrand(brand);
     }
+
+    public Car getCarById(Long id){
+        return carRepo.findById(id).orElse(null);
+    }
 }
