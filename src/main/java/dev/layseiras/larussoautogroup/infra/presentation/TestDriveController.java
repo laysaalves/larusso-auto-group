@@ -7,6 +7,8 @@ import dev.layseiras.larussoautogroup.infra.dtos.ErrorMessage;
 import dev.layseiras.larussoautogroup.infra.dtos.TestDriveResponse;
 import dev.layseiras.larussoautogroup.infra.exceptions.CarNotFoundException;
 import dev.layseiras.larussoautogroup.infra.exceptions.CarTestedConflictException;
+import dev.layseiras.larussoautogroup.infra.exceptions.ClientAlreadyTestedCarException;
+import dev.layseiras.larussoautogroup.infra.exceptions.ClientNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,16 +22,16 @@ public class TestDriveController {
     @Autowired
     private TestDriveService testDriveService;
 
-    @PostMapping("/testdrives/{carId}")
-    public ResponseEntity<?> addNewTestDrive(@PathVariable Long carId) {
+    @PostMapping({"/testdrives/{carId}", "/testdrives/{carId}/{clientId}"})
+    public ResponseEntity<?> addNewTestDrive(@PathVariable Long carId, @PathVariable (required = false) Long clientId) {
         try {
-            TestDriveResponse res = service.addNewTestDrive(carId);
+            TestDriveResponse res = service.addNewTestDrive(carId, clientId);
             if (res != null) {
                 return ResponseEntity.ok(res);
             }
-        } catch (CarNotFoundException e){
+        } catch (CarNotFoundException | ClientNotFoundException e){
             return ResponseEntity.status(404).body(new ErrorMessage(e.getMessage()));
-        } catch (CarTestedConflictException e) {
+        } catch (CarTestedConflictException | ClientAlreadyTestedCarException e) {
             return ResponseEntity.status(409).body(new ErrorMessage(e.getMessage()));
         }
         return ResponseEntity.badRequest().build();
