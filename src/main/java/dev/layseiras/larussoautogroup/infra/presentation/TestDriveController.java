@@ -41,4 +41,14 @@ public class TestDriveController {
     public List<TestDrive> getAllTestDrives() {
         return testDriveService.getAllTestDrives();
     }
+
+    @GetMapping("/testdrives/{carTested}")
+    public ResponseEntity<TestDrive> getTestDriveByCarId(@PathVariable Long carTested) {
+        TestDrive testDrive = testDriveService.getTestDriveByCarId(carTested);
+        if (testDrive != null) {
+            return ResponseEntity.ok().body(testDrive);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

@@ -59,5 +59,9 @@ public class TestDriveService {
     public List<TestDrive> getAllTestDrives() {
         return testDriveRepo.findAll();
     }
+
+    public TestDrive getTestDriveByCarId(Long carId) {
+        return testDriveRepo.findById(carId).orElse(null);
+    }
 }
 
