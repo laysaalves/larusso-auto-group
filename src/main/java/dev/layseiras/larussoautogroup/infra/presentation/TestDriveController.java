@@ -43,8 +43,8 @@ public class TestDriveController {
     }
 
     @GetMapping("/testdrives/{carTested}")
-    public ResponseEntity<TestDrive> getTestDriveByCarId(@PathVariable Long carTested) {
-        TestDrive testDrive = testDriveService.getTestDriveByCarId(carTested);
+    public ResponseEntity<TestDrive> getTestDriveByCarId(@PathVariable Car carTested) {
+        TestDrive testDrive = testDriveService.findByCarTested(carTested);
         if (testDrive != null) {
             return ResponseEntity.ok().body(testDrive);
         } else {

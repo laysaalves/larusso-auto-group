@@ -60,8 +60,8 @@ public class TestDriveService {
         return testDriveRepo.findAll();
     }
 
-    public TestDrive getTestDriveByCarId(Long carId) {
-        return testDriveRepo.findById(carId).orElse(null);
+    public TestDrive findByCarTested(Car carTested) {
+        return testDriveRepo.findByCarTested(carTested).orElse(null);
     }
 }
 
