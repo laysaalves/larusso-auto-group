@@ -20,7 +20,7 @@ public class TestDriveController {
     @Autowired
     private TestDriveService service;
 
-    @PostMapping({"/testdrives/{carId}", "/testdrives/{carId}/{clientId}"})
+    @PostMapping("/testdrives/{carId}/{clientId}")
     public ResponseEntity<?> addNewTestDrive(@PathVariable Long carId, @PathVariable (required = false) Long clientId) {
         try {
             TestDriveResponse res = service.addNewTestDrive(carId, clientId);
