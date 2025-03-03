@@ -19,8 +19,6 @@ import java.util.List;
 public class TestDriveController {
     @Autowired
     private TestDriveService service;
-    @Autowired
-    private TestDriveService testDriveService;
 
     @PostMapping({"/testdrives/{carId}", "/testdrives/{carId}/{clientId}"})
     public ResponseEntity<?> addNewTestDrive(@PathVariable Long carId, @PathVariable (required = false) Long clientId) {
@@ -39,12 +37,12 @@ public class TestDriveController {
 
     @GetMapping("/testdrives")
     public List<TestDrive> getAllTestDrives() {
-        return testDriveService.getAllTestDrives();
+        return service.getAllTestDrives();
     }
 
     @GetMapping("/testdrives/{carTested}")
     public ResponseEntity<TestDrive> getTestDriveByCarId(@PathVariable Car carTested) {
-        TestDrive testDrive = testDriveService.findByCarTested(carTested);
+        TestDrive testDrive = service.findByCarTested(carTested);
         if (testDrive != null) {
             return ResponseEntity.ok().body(testDrive);
         } else {
