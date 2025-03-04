@@ -2,11 +2,10 @@
 FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:21
-LABEL maintainer="laysa.developer@gmail.com"
+# final app image
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-COPY target/larussoautogroup-0.0.1-SNAPSHOT.jar /app/larussoapi.jar
+COPY --from=builder /app/target/*.jar larussoapi.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "larussoapi.jar"]
