@@ -1,3 +1,9 @@
+# add create jar for railway api deploy
+FROM maven:3.8.5-openjdk-17 AS builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
 FROM eclipse-temurin:21
 LABEL maintainer="laysa.developer@gmail.com"
 WORKDIR /app
