@@ -59,6 +59,9 @@ public class TestDriveService {
 
         testDrive = testDriveRepo.save(testDrive);
 
+        seller.setTestDriveQuantity(seller.getTestDriveQuantity() + 1);
+        sellerRepo.save(seller);
+
         return new TestDriveResponse(testDrive.getId(), "Test drive agendado para o cliente!");
     }
 
