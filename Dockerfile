@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21
+FROM eclipse-temurin:21-jdk-alpine
 LABEL maintainer="Layseiras <laysa.developer@gmail.com>"
 WORKDIR /app
 COPY ./target/larussoautogroup-0.0.1-SNAPSHOT.jar /app/app.jar
